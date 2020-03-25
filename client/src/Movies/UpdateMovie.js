@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom';
+import { updateMovie } from './crud';
 
 const initialState = {
     id: '',
@@ -30,9 +31,11 @@ const UpdateMovie = ({ movieList, setMovieList }) => {
 
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        push('/movies');
+        const { data } = await updateMovie(movie);
+        setMovieList(movieList.map(cur => cur.id === data.id ? data : cur));
+        push('/');
     }
 
     return (
