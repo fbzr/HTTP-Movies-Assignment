@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch, Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
 
 function Movie({ addToSavedList }) {
@@ -30,6 +30,9 @@ function Movie({ addToSavedList }) {
     <div className='save-wrapper'>
       <MovieCard movie={movie} />
 
+      <Link to={`/movies/${movie.id}/edit`}>
+        Update
+      </Link>
       <div className='save-button' onClick={saveMovie}>
         Save
       </div>
