@@ -1,7 +1,12 @@
 import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { deleteMovie } from './crud';
 
-const MovieCard = props => {
-  const { title, director, metascore, stars } = props.movie;
+const MovieCard = ({ movie }) => {
+  const { title, director, metascore, stars, id } = movie;
+  const { push } = useHistory();
+
+
   return (
     <div className="movie-card">
       <h2>{title}</h2>
@@ -18,6 +23,12 @@ const MovieCard = props => {
           {star}
         </div>
       ))}
+      
+      <div style={{marginTop: '25px'}}>
+        <Link to={`/movies/${id}/edit`}>
+          Update
+        </Link>
+      </div>
     </div>
   );
 };

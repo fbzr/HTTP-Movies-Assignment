@@ -30,9 +30,7 @@ function Movie({ addToSavedList }) {
     <div className='save-wrapper'>
       <MovieCard movie={movie} />
 
-      <Link to={`/movies/${movie.id}/edit`}>
-        Update
-      </Link>
+
       <div className='save-button' onClick={saveMovie}>
         Save
       </div>
